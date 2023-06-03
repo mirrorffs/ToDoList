@@ -1,0 +1,46 @@
+<div>
+    <form action="/create-todo" method="post">
+        <div id="form-container">
+        <div id = 'discription'>
+            <input type="text" name="desc" placeholder="Enter ToDo" required>
+        </div>
+        <div id="category">
+            <select name="category" required>
+                <option value="" disabled selected>Choose category</option>
+                <option>Personal</option>
+                <option>Work</option>
+                <option>Friend</option>
+                <option>Familiy</option>
+                <option>Other</option>
+            </select>
+            <input type="date" name="date" placeholder="Due date dd/mm/yyyy" required>
+        </div>
+        <div id="sub-del">
+        <button class="buttons colorGrey" id="submitButton" type="submit"><i class="fa fa-plus-square" > </i> Add Task</button>
+        <button class="buttons colorRed" id="deleteButton" type="submit"><i class="fa fa-trash-o"></i> Delete Task</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+<div id="list-container">
+    <ul id="list-items" type="none">
+    <%for(let todo of todoList){ %>
+        
+        <li class="todo-list">
+            <input type="checkbox" name="delete-checkbox" class="delete-checkbox" onclick='checkedOrNot()' id=<%= todo._id %>>
+            <div class="desc-date">
+                <p><%= todo.desc %></p>
+                <p><%= todo.date %></p>
+            </div>
+            <div class="category">
+                <p><%= todo.category %></p>
+            </div>
+        </li>
+        <% } %></ul>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="/js/script.js"></script>
+
+</div>
